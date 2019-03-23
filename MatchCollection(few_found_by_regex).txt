@@ -1,0 +1,2 @@
+﻿MatchCollection matches = Regex.Matches(elementInWhichYouLooking, @"regex_should_be_here");
+return mathces[0]; //will return first elem in your matches collection

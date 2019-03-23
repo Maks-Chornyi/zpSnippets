@@ -1,0 +1,14 @@
+﻿var image = System.Drawing.Image.FromFile(project.Variables["captchaPath"].Value);
+string base64String = String.Empty;
+
+using (System.IO.MemoryStream ms = new System.IO.MemoryStream()) {
+	image.Save(ms, System.Drawing.Imaging.ImageFormat.Png);
+	byte [] imagesBytes = ms.ToArray();
+	base64String = Convert.ToBase64String(imagesBytes);
+}
+string res = ZennoPoster.CaptchaRecognition("MonkeyEnter.dll", base64String, String.Empty);
+var split = res.Split(new [] {"-|-"}, StringSplitOptions.RemoveEmptyEntries);
+if (split.Length > 1) {
+	return split[0];
+}
+return res;
