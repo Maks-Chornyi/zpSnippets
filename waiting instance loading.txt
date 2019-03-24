@@ -1,0 +1,6 @@
+﻿//waiting loading page
+for (int ii = 0; ii < 10; ii++) {
+	System.Threading.Thread.Sleep(1000);
+	if(!instance.ActiveTab.IsBusy)
+		break;
+}
